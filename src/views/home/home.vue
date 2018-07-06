@@ -12,31 +12,18 @@
               <i class="el-icon-tickets"></i>
               <span>全部教程</span>
             </div>
-            <ul class="menu">
-                <li><i class="el-icon-edit-outline"></i><a href="/">HTML / CSS</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">JavaScript</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">服务端</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">数据库</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">移动端</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">XML 教程</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">ASP.NET</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">Web Service</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">开发工具</a></li>
-                <li><i class="el-icon-edit-outline"></i><a href="/">网站建设</a></li>
+            <ul class="menu" id="menu">
+              <li v-for="(data,index) in siderArray" :key="index" @click.native="menuChange(index)"><i class="el-icon-edit-outline"></i>{{data.title}}</li>
             </ul>
            </div>
            <!--主体-->
-           <div class="content">
-             <content-info :dataObj="htmls"/>
-             <content-info :dataObj="Javascript"/>
-             <content-info :dataObj="server"/>
-             <content-info :dataObj="MySQL"/>
-             <content-info :dataObj="movePhone"/>
-             <content-info :dataObj="XML"/>
-             <content-info :dataObj="ASP"/>
-             <content-info :dataObj="WebService"/>
-             <content-info :dataObj="util"/>
-             <content-info :dataObj="web"/>
+           <div class="content" id="content" >
+             <div v-if="isSelect" v-for="(data,index) in siderArray" :key="index">
+               <content-info :dataObj="data"/>
+             </div>
+             <div v-else v-for="(data,index) in siderArray" :key="index" :class="siderSelect==index?active:noShow">
+               <content-info :dataObj="data"/>
+             </div>
            </div>
         </div>
       </div>
@@ -63,6 +50,9 @@ export default {
   },
   data() {
     return {
+      isSelect:true,
+      siderSelect:'',
+      navSelect:'',
       nav:[
         {text:'首页',href:'/'},
         {text:'菜鸟笔记',href:'/'},
@@ -74,7 +64,8 @@ export default {
         {text:'小游戏',href:'/'},
         {text:'登录',href:'/'},
        ],
-       htmls:{
+       siderArray:[
+         {
          title:'HTML / CSS',
          array:[
            {title:'【学习HTML】', href:'/',src:'../../assets/h1.png',text:'HTML，即超文本标记语言（Hyper Text Markup Language）'},
@@ -87,7 +78,7 @@ export default {
            {title:'【学习Foundation】',href:'/',src:'../../assets/h8.png',text:'Foundation用于开发响应式的HTML，CSS and JavaScript框架'},
          ]
        },
-       Javascript:{
+       {
          title:'JavaScript',
          array:[
            {title:'【学习JavaScript】', href:'/',src:'../../assets/js1.png',text:'JavaScript是Web的编程语言'},
@@ -106,7 +97,7 @@ export default {
            {title:'【学习Google地图】',href:'/',src:'../../assets/js14.png',text:'Google地图接口使用说明'},
          ]
        },
-       server:{
+       {
          title:'服务端',
          array:[
            {title:'【学习PHP】', href:'/',src:'../../assets/ser1.png',text:'PHP是一种通用开源脚本语言'},
@@ -132,7 +123,7 @@ export default {
            {title:'【学习VBScript】',href:'/',src:'../../assets/ser21.png',text:'一种微软环境下的轻量级的解释性语言'},
          ]
        },
-       MySQL:{
+       {
          title:'数据库',
          array:[
            {title:'【学习SQL】', href:'/',src:'../../assets/ser1.png',text:'结构化查询语言（Structured Query Language）'},
@@ -143,7 +134,7 @@ export default {
            {title:'【学习Memcached】',href:'/',src:'../../assets/ser6.png',text:'Memcached是一个自由开源的，高性能，分布式内存对象缓存系统'},
          ]
        },
-       movePhone:{
+       {
          title:'移动端',
          array:[
            {title:'【学习Android】', href:'/',src:'../../assets/ser1.png',text:'Android是一种基于Linux的自由及开发源码的操作系统，主要使用于移动设备'},
@@ -154,7 +145,7 @@ export default {
            {title:'【学习Kotlin】',href:'/',src:'../../assets/ser6.png',text:'在Java虚拟机上运行的静态类型编程语言，Android官方开发语言'},
          ]
        },
-       XML:{
+       {
          title:'XML教程',
          array:[
            {title:'【学习XML】', href:'/',src:'../../assets/ser1.png',text:'XML被设计用来传输和存储数据'},
@@ -170,7 +161,7 @@ export default {
            {title:'【学习SVG】',href:'/',src:'../../assets/ser11.png',text:'SVG使用XML格式定义图像'},
          ]
        },
-       ASP:{
+       {
          title:'ASP.NET',
          array:[
            {title:'【学习ASP.NET】', href:'/',src:'../../assets/ser1.png',text:'ASP.NET是一个使用HTML、CSS、JavaScript和服务器脚本创建网页和网站的开发框架'},
@@ -181,7 +172,7 @@ export default {
            {title:'【学习Web Forms】',href:'/',src:'../../assets/ser6.png',text:'Web Forms是三种创建ASP.NET网站和Web应用程序的编程模式中的一种'},
          ]
        },
-       WebService:{
+       {
          title:'Web Service',
          array:[
            {title:'【学习Web Service】', href:'/',src:'../../assets/ser1.png',text:'Web Service脚本平台需支持XML+HTTP'},
@@ -191,7 +182,7 @@ export default {
            {title:'【学习RDF】',href:'/',src:'../../assets/ser5.png',text:'DF（资源描述框架）是描述网络资源的W3C标准'},
          ]
        },
-       util:{
+       {
          title:'开发工具',
          array:[
            {title:'【学习Eclipse】', href:'/',src:'../../assets/ser1.png',text:'Eclipse是一个开放源代码的、基于Java的可扩展开发平台'},
@@ -200,7 +191,7 @@ export default {
            {title:'【学习Firebug】',href:'/',src:'../../assets/ser4.png',text:'Firebug是一个人开源的web开发工具'},
          ]
        },
-       web:{
+       {
          title:'网站建设',
          array:[
            {title:'【学习HTTP】', href:'/',src:'../../assets/ser1.png',text:'HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上用用最为广泛的一种网络传输协议'},
@@ -212,10 +203,22 @@ export default {
            {title:'【网站品质】',href:'/',src:'../../assets/ser4.png',text:'学习如何创建高质量的web网站'},
          ]
        },
+       ],
+      
     }
   },
+  
+  method:{
+    menuChange(index) {
+      console.log('ssss--------index');
+      this.isSelect = false;
+      this.siderSelect = index;
+    },
+  },
+
 }
 </script>
+
 
 <style lang="scss">
 @import '~styles/index';
@@ -283,6 +286,12 @@ export default {
         padding-top:0;
       }
     }
+  }
+  .active{
+    display:block;
+  }
+  .noShow{
+    display:none;
   }
 }
 </style>
