@@ -1,6 +1,6 @@
 <template>
   <div class="homeContent">
-      <h2><i class="el-icon-tickets"></i>{{dataObj.title}}</h2>
+      <h2><i class="fa fa-list"></i>{{dataObj.title}}</h2>
       <div class="boxblock" v-for="(data,index) in dataObj.array" :key="index">
             <a :href="data.href">   
             <h4>{{data.title}}</h4>
@@ -42,7 +42,7 @@ export default {
         border-bottom:1px solid #eaeaea;
     }
     .boxblock{
-        width:31%;
+        width:28%;
         margin:0 8px 10px 0;
         text-align:left;
         height:80px;
@@ -54,9 +54,9 @@ export default {
         float:left;
         overflow: hidden;
         h4{
-        color:#64854c;
+        color:$greeen-color;
         font-size:16px;
-        margin:10px 0;
+        margin:6px 0 8px 0;
         line-height: 1.1;
         }
         img{
@@ -64,10 +64,12 @@ export default {
             margin:0 10px;
             width:32px;
             height:32px;
+            margin-bottom: 8px;
         }
         strong{
             display:block;
             color:#666;
+            text-align:left;
         }
     }
     

@@ -91,7 +91,7 @@ export default {
         width:80%;
         min-height:250px;
         .share{
-            width:16%;
+            width:15%;
             min-height:226px;
             border-left:1px solid #e4e4e4;
             padding:20px 0 0 40px;

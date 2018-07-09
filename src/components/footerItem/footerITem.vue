@@ -33,7 +33,7 @@ export default {
         min-height:175px;
         margin:25px 0;
         border-left:1px solid #e4e4e4;
-        width:18%;
+        width:15%;
         float:left; 
         color:gray !important;
         text-align:left; 
