@@ -39,7 +39,7 @@ export default {
         font-size:18px;
         font-weight:700;
         margin:12px 0;
-        border-bottom:1px solid #eaeaea;
+        border-bottom:$border-color-ea;
     }
     .boxblock{
         width:28%;

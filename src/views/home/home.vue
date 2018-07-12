@@ -12,12 +12,12 @@
               <i class="fa fa-bars"></i>
               <span>全部教程</span>
             </div>
-            <ul class="menu" id="menu">
+            <ul class="menu">
               <li v-for="(data,index) in siderArray" :key="index" @click="menuChange(index)"><i class="el-icon-edit-outline"></i>{{data.title}}</li>
             </ul>
            </div>
            <!--主体-->
-           <div class="content" id="content" >
+           <div class="content">
              <div v-if="isSelect">
                <content-info v-for="(data,index) in siderArray" :key="index" :dataObj="data"/>
              </div>
@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import logoSearch from '@/components/logoSearch'
-import commNav from '@/components/nav'
-import contentInfo from '@/components/content'
-import footers from '@/components/footer'
-import siderBtn from '@/components/qrcode'
+import logoSearch from '@/components/common/logoSearch'
+import commNav from '@/components/common/nav'
+import contentInfo from '@/components/home/content'
+import footers from '@/components/common/footer'
+import siderBtn from '@/components/common/qrcode'
 
 export default {
   components: {
@@ -56,14 +56,35 @@ export default {
       navSelect:'',
       nav:[
         {text:'首页',href:'/'},
-        {text:'菜鸟笔记',href:'/'},
+        {text:'菜鸟笔记',href:'/note'},
         {text:'菜鸟工具',href:'/'},
-        {text:'参考手册',href:'/'},
+        {text:'参考手册',
+        barArray:[
+          {name:'HTML手册',href:'/'},
+          {name:'Javascript',href:'/'},
+          {name:'CSS 1，2，3',href:'/'},
+          {name:'Zepto中文手册',href:'/'},
+          {name:'Flat UI',href:'/'},
+          {name:'PostageSQL手册',href:'/'},
+        ],
+        showBar:true},
         {text:'笔记列表',href:'/'},
-        {text:'测试/考试',href:'/'},
+        {text:'测验/考试',
+        barArray:[
+          {name:'HTML测验',href:'/'},
+          {name:'HTML5测验',href:'/'},
+          {name:'XHTML测验',href:'/'},
+          {name:'CSS测验',href:'/'},
+          {name:'JavaScript测验',href:'/'},
+          {name:'JQuery测验',href:'/'},
+          {name:'XML测验',href:'/'},
+          {name:'ASP测验',href:'/'},
+          {name:'PHP测验',href:'/'},
+          {name:'SQL测验',href:'/'},
+        ],showBar:true},
         {text:'本地书签',href:'/'},
         {text:'小游戏',href:'/'},
-        {text:'登录',href:'/'},
+        {text:'登录',showDialog:true},
        ],
        siderArray:[
          {
@@ -75,7 +96,7 @@ export default {
            {title:'【学习CSS3】',href:'/',src:require('../../assets/h4.png'),text:'CSS3是CSS技术的升级版本'},
            {title:'【学习Bootstrap3】',href:'/',src:require('../../assets/h5.png'),text:'Bootstrap，来自Twitter，是目前最受欢迎的前端框架'},
            {title:'【学习Bootstrap4】',href:'/',src:require('../../assets/h6.png'),text:'Bootstrap4目前是Bootstrap的最新版本'},
-           {title:'【学习Font Awesome】',href:'/',src:require('../../assets/h7.png'),text:'Font Awesome是一套绝佳的图表字体库喝CSS框架'},
+           {title:'【学习Font Awesome】',href:'/',src:require('../../assets/h7.png'),text:'Font Awesome是一套绝佳的图表字体库和CSS框架'},
            {title:'【学习Foundation】',href:'/',src:require('../../assets/h8.png'),text:'Foundation用于开发响应式的HTML，CSS and JavaScript框架'},
          ]
        },
@@ -257,7 +278,7 @@ export default {
         }
         li{
           padding:4px;
-          height:40px;
+          height:32px;
           margin:0;
           line-height: 32px;
           font-size: $font-size-small;
@@ -268,9 +289,9 @@ export default {
           }
         }
         li:nth-child(2n+1){
-          background-color: #fbfbfb;
-          border-top:1px solid #efefef;
-          border-bottom:1px solid #efefef;
+          background-color: $background-color-fb;
+          border-top:$border-color-ef;
+          border-bottom:$border-color-ef;
         }
       }
     }
@@ -279,7 +300,7 @@ export default {
       text-align:left;
       background-color: $body-background;
       padding:12px 20px;
-      border:1px solid #eaeaea;
+      border:$border-color-ea;
       border-radius: 4px;
       height:auto;
       .homeContent:first-child{

@@ -6,7 +6,7 @@
       </div>
       <div :class="[isMove?'active':'noShow','weChat']">
         <h4>微信关注</h4>
-        <img src="../../assets/qrcode.png"/>
+        <img src="../../../assets/qrcode.png"/>
       </div>
   </div>
 </template>

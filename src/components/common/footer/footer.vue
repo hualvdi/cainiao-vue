@@ -8,7 +8,7 @@
               <footer-item :dataObj="webInfo"/>
               <div class="share">
                   <h2>关注微信</h2>
-                  <div class="share-qcode"><img src="../../assets/qrcode.png"/></div>
+                  <div class="share-qcode"><img src="../../../assets/qrcode.png"/></div>
               </div>
           </div>
       </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import footerItem from '@/components/footerItem'
+import footerItem from '@/components/common/footerItem'
 export default {
     name:'footers',
     components: {

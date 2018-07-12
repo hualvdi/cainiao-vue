@@ -9,7 +9,7 @@
                         </h1>  
                  </div>
                  <div class="right">
-                        <el-input v-model="input" placeholder="请输入内容"></el-input>
+                        <el-input v-model="input" placeholder="搜索..."></el-input>
                  </div>
              </div>
           </div>
@@ -46,7 +46,7 @@ export default {
         .left{
             width:61.6%;
            h1{
-               background-image: url(../../assets/logo.png);
+               background-image: url(../../../assets/logo.png);
                background-repeat: no-repeat;
                width:258px;
                height:39px;

@@ -31,6 +31,16 @@ const routes = [
     name: 'home',
     component: load('home'),
   },
+  {
+    path: '/note',
+    name: 'note',
+    component: load('note','index'),
+  },
+  {
+    path: '/noteDetail',
+    name: 'noteDetail',
+    component: load('note','detail'),
+  },
 ]
 
 export default new Router({
