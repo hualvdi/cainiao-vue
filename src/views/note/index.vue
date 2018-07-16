@@ -1,76 +1,37 @@
 <template>
   <div class="noteIndex">
-      <!--搜索-->
-      <logo-search/>
-      <!--导航栏-->
-      <comm-nav :data-array="nav"/>
-      <!--内容-->
-      <div class="container main">
-        <div class="row flex">
-           <!--主体-->
-           <div class="col content">
-             <div class="first">
-                  <content-item v-for="(data,index) in contentArray" :key="index" :dataObj="data"/>
-             </div>
-            <div class="page">
-                <el-pagination
-                background
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :current-page="currentPage"
-                :page-sizes="[10, 20, 30, 40]"
-                :page-size="10"
-                layout="total, sizes, prev, pager, next"
-                :total="40">
-                </el-pagination>
-            </div>
-             
-           </div>
-           <div class="sider-Rights">
-               <div class="clumm"  v-for="(data,index) in siderRightObj" :key="index">
-                   <sider-right :dataObj="data"/>
-               </div>
-           </div>
-        </div>
+     <!--主体-->
+      <div class="col content">
+          <div class="first">
+              <content-item v-for="(data,index) in contentArray" :key="index" :dataObj="data"/>
+          </div>
+          <div class="page">
+              <el-pagination
+              background
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="currentPage"
+              :page-sizes="[10, 20, 30, 40]"
+              :page-size="10"
+              layout="total, sizes, prev, pager, next"
+              :total="40">
+              </el-pagination>
+          </div>
       </div>
-      <!--底部-->
-      <footers/>
-      <sider-btn/>
-
   </div>
 </template>
 
 <script>
-import logoSearch from '@/components/common/logoSearch'
-import commNav from '@/components/common/nav'
 import contentItem from '@/components/note/contentItem'
-import footers from '@/components/common/footer'
-import siderBtn from '@/components/common/qrcode'
-import siderRight from '@/components/note/siderRight'
-
 export default {
   components: {
-    logoSearch,
-    commNav,
     contentItem,
-    footers,
-    siderBtn,
-    siderRight,
   },
   data() {
     return {
       isSelect:true,
       siderSelect:'',
       navSelect:'',
-      nav:[
-        {text:'首页',href:'/'},
-        {text:'笔记首页',href:'/note'},
-        {text:'ANDROID',href:'/note'},
-        {text:'互联网',href:'/note'},
-        {text:'程序员人生',href:'/note'},
-        {text:'程序员笑话',href:'/note'},
-        {text:'编程技术',href:'/note'},
-       ],
        contentArray:[
          {title:'Java中的this和super的用法总结',href:'/noteDetail',src:require('../../assets/thumbnail.png'),text:'this this 是自身的一个对象，代表对象本身，可以理解为：指向对象本身的一个指针。this的用法在Java中大体分为3种：1. 普通...'},
          {title:'C++虚拟函数和纯函数的区别',href:'/noteDetail',src:require('../../assets/thumbnail.png'),text:'首先：强调一个概念 定义一个函数为虚函数，不代表函数为不被实现的函数。定义他为虚函数是为了允许用基类的指针来调用子类的这个函数。...'},
@@ -83,16 +44,6 @@ export default {
          {title:'Java String Tokenizer 类使用方法',href:'/noteDetail',src:require('../../assets/thumbnail.png'),text:'Java String Tokenizer属于java.util包，用于分割字符串。StringTokenizer构造方法：1、StringTokenizer（String str):构造一个...'},
          {title:'C++函数指针&类成员函数指针',href:'/noteDetail',src:require('../../assets/thumbnail.png'),text:'一、函数指针 函数存放在内存代码的区域内，它们同样有地址，如果我们有一个int test(this a)的函数，那么 ，它的地址就是函数的名字，这一...'},
        ],
-       siderRightObj:[
-           {
-           title:'笔记分类',
-           array:['Android基础入门','Android扩展教程','JMR使用教程','PHP常用实例','Python常用实例','互联网','区块链','杂乱无章','科技资讯','程序员人生','程序员笑话','编程技术'],
-           }, {
-           title:'教程列表',
-           array:['ADD教程','Ajax教程','Android教程','Angular2教程','AngularJS教程','APPML教程','ASP教程','ASP.NET教程','Bootstrap教程','Bootstrap4教程','C教程','C#教程'
-           ,'C++教程','CSS参考手册','CSS教程','CSS3教程','Django教程','Docker教程','DTD教程','Eclipse教程','Firebug教程'],
-           },
-           ],
         currentPage: 4,
     }
   },
@@ -113,10 +64,8 @@ export default {
 <style lang="scss">
 @import '~styles/index';
 .noteIndex{
-  .main{
-    margin-top:20px;
-    .content{
-      width:66%;
+  width:66%;
+  .content{
       border:$border-color-ef;
       border-radius: 4px;
       overflow: hidden;
@@ -141,16 +90,5 @@ export default {
       }
       
     }
-    .sider-Rights{
-        float:left;
-        width:29.6%;
-        height:auto;
-        .clumm{
-            width:100%;
-            display:flex;
-            flex-flow: column wrap;
-        }
-    }
-  }
 }
 </style>

@@ -1,23 +1,36 @@
 <template>
   <div class="nav">
+      <!--一级菜单-->
+      <div class="box1">
+      <div class="container">
       <div class="row">
           <div class="navs">
-              <ul>
-                  <li v-for="(data,index) in dataArray" :key="index">
-                    <a v-if="data.href" :href=data.href target="_blank">{{ data.text }}</a>
-                    <a v-else @click="subBarShow(data)">{{ data.text }}</a>
-                  </li>
-                </ul>     
+            <ul>
+                <li v-for="(data,index) in dataArray" :key="index">
+                <a v-if="data.href" :href=data.href target="_blank">{{ data.text }}</a>
+                <a v-else @click="subBarShow(data)">{{ data.text }}</a>
+                </li>
+            </ul>     
               </div>
-              <div v-if="barVisible" class="navBar">
-                  <ul>
-                      <li v-for="(data,index) in subBar" :key="index">
-                        <a :href=data.href>{{data.name}}</a>
-                     </li>
-                  </ul>
-             </div>
-             <login :visible="dialogFormVisible" @getVisible="getVisible"/>   
           </div> 
+      </div>
+      </div>
+       <!--二级菜单-->
+      <div class="box2"  v-if="barVisible" >
+      <div class="container">
+      <div class="row">
+          <div class="navBar">
+            <ul>
+                <li v-for="(data,index) in subBar" :key="index">
+                <a :href=data.href>{{data.name}}</a>
+                </li>
+            </ul>
+          </div>
+      </div>
+      </div>
+      </div>
+       <!--登录modal-->
+      <login :visible="dialogFormVisible" @getVisible="getVisible"/>   
   </div>
 </template>
 
@@ -33,17 +46,6 @@ export default {
             dialogFormVisible: false,
             barVisible:false,
             subBar:[],
-            form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        },
-        formLabelWidth: '120px',
         }
     },
     props:{
@@ -59,7 +61,6 @@ export default {
             }  
         },
         getVisible(data) {
-            //console.log('parent',data);
             this.dialogFormVisible = data;
         }
     },
@@ -69,11 +70,19 @@ export default {
 <style lang="scss">
 @import '~styles/index';
 .nav{
-    width:100%;
+    width:100% !important;
     overflow: hidden;
+    .box1{
+        width:100% !important;
+        background-color: #96b97d;
+    }
+    .box2{
+        width:100% !important;
+        background-color: #fff;
+        height:34px;
+    }
     .navs,.navBar{
         width:auto;
-        background-color: #96b97d;
         padding:0 10px 2px;
         ul{
             margin-left:20px;
@@ -86,7 +95,6 @@ export default {
                 margin-right:20px;
                 color:#fff;
                 vertical-align: middle;
-                
                 a{
                     color:#fff;
                     cursor: pointer; 
@@ -110,7 +118,5 @@ export default {
             padding-left:10px;
         }
     }
-    
-    
 }
 </style>

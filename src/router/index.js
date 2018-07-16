@@ -32,14 +32,51 @@ const routes = [
     component: load('home'),
   },
   {
-    path: '/note',
-    name: 'note',
-    component: load('note','index'),
+    path:'/homeBase',
+    name: 'homeBase',
+    component: load('home','base'),
+    children:[],
+  },
+  {
+    path:'/account',
+    name: 'account',
+    component: load('account','base'),
+    children:[
+      {
+        path:'/resetPassword',
+        name:'resetPassword',
+        component: load('account','resetPassword'),
+      },
+    ],
+  },
+  {
+    path: '/noteBase',
+    name: 'noteBase',
+    component: load('note','base'),
+    children:[
+      {
+        path: '/note',
+        name: 'note',
+        component: load('note','index'),
+      },
+    ],
   },
   {
     path: '/noteDetail',
     name: 'noteDetail',
     component: load('note','detail'),
+  },
+  {
+    path: '/toolIndex',
+    name: 'toolIndex',
+    component: load('tool','base'),
+    children:[
+      {
+        path:'/tool',
+        name:'tool',
+        component: load('tool','index'),
+      },
+    ],
   },
 ]
 
