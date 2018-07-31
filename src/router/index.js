@@ -32,49 +32,54 @@ const routes = [
     component: load('home'),
   },
   {
-    path:'/homeBase',
+    path: '/homeBase',
     name: 'homeBase',
-    component: load('home','base'),
-    children:[],
+    component: load('home', 'base'),
+    children: [],
   },
   {
-    path:'/account',
+    path: '/account',
     name: 'account',
-    component: load('account','base'),
-    children:[
+    component: load('account', 'base'),
+    children: [
       {
-        path:'/resetPassword',
-        name:'resetPassword',
-        component: load('account','resetPassword'),
+        path: '/resetPassword',
+        name: 'resetPassword',
+        component: load('account', 'resetPassword'),
       },
     ],
   },
   {
     path: '/noteBase',
     name: 'noteBase',
-    component: load('note','base'),
-    children:[
+    component: load('note', 'base'),
+    children: [
       {
         path: '/note',
         name: 'note',
-        component: load('note','index'),
+        component: load('note', 'index'),
       },
     ],
   },
   {
     path: '/noteDetail',
     name: 'noteDetail',
-    component: load('note','detail'),
+    component: load('note', 'detail'),
   },
   {
     path: '/toolIndex',
     name: 'toolIndex',
-    component: load('tool','base'),
-    children:[
+    component: load('tool', 'base'),
+    children: [
       {
-        path:'/tool',
-        name:'tool',
-        component: load('tool','index'),
+        path: '/tool',
+        name: 'tool',
+        component: load('tool', 'index'),
+      },
+      {
+        path: '/examples',
+        name: 'examples',
+        component: load('tool', 'examples'),
       },
     ],
   },
