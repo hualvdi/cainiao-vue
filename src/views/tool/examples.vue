@@ -5,10 +5,18 @@
        <h2><i class="fa fa-list"></i> 最新文章列表</h2>
      </div>
      <div  class="example-main">
-       <div class="example-item">
-         <p class="item-title"><a><i class="fa fa-file-code-o"></i> Vue循环<span>></span></a></p>
+       <div class="example-item"  v-for="(data,index) in contentArray" :key="index">
+         <p class="item-title"><a><i class="fa fa-file-code-o"></i> {{data}}<span>></span></a></p>
        </div>
      </div>
+     <div class="footer-page">
+       <el-pagination
+       background
+       layout="total, sizes,prev, pager, next"
+       :total="100">
+       </el-pagination>
+     </div>
+     
   </div>
 </template>
 
@@ -56,10 +64,11 @@ export default {
   color: #333;
   .header-title {
     padding: 16px 0 20px;
-    border-bottom: 1px solid #eee;
+
     h2 {
-      padding-bottom: 9px;
+      padding-bottom: 6px;
       font-size: 30px;
+      border-bottom: 1px solid #eee;
     }
   }
   .example-main {
@@ -76,10 +85,16 @@ export default {
     .item-title {
       font-size: 16px;
       color: inherit;
+      font-weight: bold;
       span {
         float: right;
       }
     }
+  }
+  .footer-page {
+    text-align: center;
+    padding: 20px 0;
+    color: #98b880;
   }
 }
 </style>

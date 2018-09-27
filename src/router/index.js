@@ -25,11 +25,17 @@ const routes = [
     path: '/',
     name: '/',
     component: load('home'),
+    meta: {
+      title: '菜鸟教程 - 学的不仅是技术，更是梦想',
+    },
   },
   {
     path: '/home',
     name: 'home',
     component: load('home'),
+    meta: {
+      title: '菜鸟教程 - 学的不仅是技术，更是梦想',
+    },
   },
   {
     path: '/homeBase',
@@ -46,6 +52,9 @@ const routes = [
         path: '/resetPassword',
         name: 'resetPassword',
         component: load('account', 'resetPassword'),
+        meta: {
+          title: '重置密码|菜鸟教程',
+        },
       },
     ],
   },
@@ -58,6 +67,9 @@ const routes = [
         path: '/note',
         name: 'note',
         component: load('note', 'index'),
+        meta: {
+          title: '菜鸟笔记|菜鸟教程',
+        },
       },
     ],
   },
@@ -75,11 +87,32 @@ const routes = [
         path: '/tool',
         name: 'tool',
         component: load('tool', 'index'),
+        meta: {
+          title: '菜鸟工具 - 不止于工具',
+        },
       },
       {
         path: '/examples',
         name: 'examples',
         component: load('tool', 'examples'),
+        meta: {
+          title: '实例归档|菜鸟工具',
+        },
+      },
+    ],
+  },
+  {
+    path: '/userNoteBase',
+    name: 'userNoteBase',
+    component: load('userNote', 'base'),
+    children: [
+      {
+        path: '/userNote',
+        name: 'userNote',
+        component: load('userNote', 'index'),
+        meta: {
+          title: '笔记列表|菜鸟教程',
+        },
       },
     ],
   },

@@ -33,7 +33,7 @@ export default {
       nav:[
         {text:'首页',href:'/'},
         {text:'菜鸟笔记',href:'/note'},
-        {text:'菜鸟工具',href:'/'},
+        {text:'菜鸟工具',href:'/tool'},
         {text:'参考手册',
         barArray:[
           {name:'HTML手册',href:'/'},
@@ -44,7 +44,7 @@ export default {
           {name:'PostageSQL手册',href:'/'},
         ],
         showBar:true},
-        {text:'笔记列表',href:'/'},
+        {text:'笔记列表',href:'/userNote'},
         {text:'测验/考试',
         barArray:[
           {name:'HTML测验',href:'/'},

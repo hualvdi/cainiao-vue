@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import navSearch from '@/components/toolCommon/navSearch'
+import navSearch from '@/components/tool/navSearch'
 import footers from '@/components/common/footer'
 
 export default {

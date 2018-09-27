@@ -57,7 +57,7 @@ export default {
       nav:[
         {text:'首页',href:'/'},
         {text:'菜鸟笔记',href:'/note'},
-        {text:'菜鸟工具',href:'/'},
+        {text:'菜鸟工具',href:'/tool'},
         {text:'参考手册',
         barArray:[
           {name:'HTML手册',href:'/'},
@@ -68,7 +68,7 @@ export default {
           {name:'PostageSQL手册',href:'/'},
         ],
         showBar:true},
-        {text:'笔记列表',href:'/'},
+        {text:'笔记列表',href:'/userNote'},
         {text:'测验/考试',
         barArray:[
           {name:'HTML测验',href:'/'},
@@ -242,77 +242,78 @@ export default {
 
 <style lang="scss">
 @import '~styles/index';
-.home{
-  .main{
-    margin-top:20px;
-    .column{
-      width:16%;
-      margin-right:1%;
-      text-align:left;
-      .header{
-        width:100%;
-        height:29px;
+.home {
+  .main {
+    margin-top: 20px;
+    .column {
+      width: 16%;
+      margin-right: 1%;
+      text-align: left;
+      .header {
+        width: 100%;
+        height: 29px;
         background-color: #f2f2f2;
-        color:grey;
-        border-top-left-radius:3px;
-        font-size:1.4em;
-        font-weight:400;
-        padding-left:4px;
-        line-height:1.9em;
-        opacity:0.7;
-        text-shadow: 0 1px 0 rgba(255,255,255,.15);
-        border:1px solid rgba(0,0,0,.1);
-        font-family: proxima-nova,'Helvetica Neue',Helvetica,Arial,sans-serif;
-        i{
+        color: grey;
+        border-top-left-radius: 3px;
+        font-size: 1.4em;
+        font-weight: 400;
+        padding-left: 4px;
+        line-height: 1.9em;
+        opacity: 0.7;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial,
+          sans-serif;
+        i {
           vertical-align: middle;
         }
       }
-      .menu{
-        width:100%;
-        text-align:left;
-        padding:0;
-        margin:0 0 20px 0;
-        i{
-          padding-right:2px;
+      .menu {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        margin: 0 0 20px 0;
+        i {
+          padding-right: 2px;
           vertical-align: middle;
         }
-        li{
-          padding:4px;
-          height:32px;
-          margin:0;
+        li {
+          padding: 4px;
+          height: 32px;
+          margin: 0;
           line-height: 32px;
           font-size: $font-size-small;
-          color:rgb(51, 51, 51) !important;
+          color: rgb(51, 51, 51) !important;
           cursor: pointer;
-          a{
-            color:rgb(51, 51, 51);
+          a {
+            color: rgb(51, 51, 51);
           }
         }
-        li:nth-child(2n+1){
+        li:nth-child(2n + 1) {
           background-color: $background-color-fb;
-          border-top:$border-color-ef;
-          border-bottom:$border-color-ef;
+          border-top: $border-color-ef;
+          border-bottom: $border-color-ef;
         }
       }
     }
-    .content{
-      width:88%;
-      text-align:left;
+    .content {
+      width: 88%;
+      text-align: left;
       background-color: $body-background;
-      padding:12px 20px;
-      border:$border-color-ea;
+      padding: 12px 20px;
+      border: $border-color-ea;
       border-radius: 4px;
-      height:auto;
-      .homeContent:first-child{
-        padding-top:0;
+      height: auto;
+      .homeContent:first-child {
+        padding-top: 0;
       }
     }
   }
-  .active{
-    display:block;
+  .active {
+    display: block;
   }
-  .noShow{
-    display:none;
+  .noShow {
+    display: none;
   }
 }
 </style>
